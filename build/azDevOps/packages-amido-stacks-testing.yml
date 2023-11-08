@@ -117,7 +117,7 @@ stages:
               package_feed: "$(Package.Feed)"
               publish_symbols: true
               publish_public: "$(Package.Public)"
-              nuget_service_connection: false
+              use_nuget_service_connection: false
               # Secret Config
               cosmosdb_secret: false
               # .NET Core version variables
