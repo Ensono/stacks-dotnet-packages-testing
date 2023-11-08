@@ -105,7 +105,7 @@ stages:
       - job: BuildDotNet
         dependsOn: Validation
         pool:
-          vmImage: "windows-2019"
+          vmImage: "windows-2022"
         continueOnError: false
         steps:
           - template: azDevOps/azure/templates/v2/steps/build-dotnet-package.yml@templates
@@ -121,4 +121,4 @@ stages:
               # Secret Config
               cosmosdb_secret: false
               # .NET Core version variables
-              dotnet_core_version: "3.1.x"
+              dotnet_core_version: "6.0.x"
