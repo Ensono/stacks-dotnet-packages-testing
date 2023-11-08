@@ -33,8 +33,8 @@ variables:
     value: "Stacks"
   - name: Package.Public
     value: true
-  - name: Package.nuget_service_connection
-    value: NuGetAmidoStacksServiceConnection
+  # - name: Package.nuget_service_connection
+  #  value: NuGetAmidoStacksServiceConnection
   - name: Package.Path
     value: "src/Amido.Stacks.Testing"
   - name: Test.Path
@@ -66,7 +66,7 @@ resources:
   repositories:
     - repository: templates
       type: github
-      name: amido/stacks-pipeline-templates
+      name: ensono/stacks-pipeline-templates
       ref: refs/tags/v2.0.1
       # Created when you set up the connection to GitHub from Azure DevOps
       endpoint: amidostacks
@@ -81,7 +81,7 @@ stages:
     jobs:
       - job: Validation
         pool:
-          vmImage: "ubuntu-18.04"
+          vmImage: "ubuntu-22.04"
         steps:
           - checkout: self
 
@@ -117,8 +117,8 @@ stages:
               package_feed: "$(Package.Feed)"
               publish_symbols: true
               publish_public: "$(Package.Public)"
-              nuget_service_connection: "$(Package.nuget_service_connection)"
+              nuget_service_connection: false
               # Secret Config
               cosmosdb_secret: false
               # .NET Core version variables
-              dotnet_core_version: "3.1.x"
+              dotnet_core_version: "6.0.x"
